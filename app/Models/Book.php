@@ -16,12 +16,24 @@ class Book extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'title',
+        'description',
         'publication_date'
     ];
 
+    /**
+     * Get all the book's authors
+     */
     public function author(): BelongsToMany
     {
         return $this->belongsToMany(Author::class);
+    }
+
+    /**
+     * Get all the book's categories
+     */
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class);
     }
 }

@@ -11,7 +11,7 @@
 <body>
     <div>
         @forelse ($books as $book)
-            {{ $book->name }}<br>
+            {{ $book->title }}<br>
         @empty
             <div class="alert alert-secondary" role="alert">
                 @lang('Sorry, there are no books')

@@ -16,10 +16,10 @@ class BookFactory extends Factory
      */
     public function definition()
     {
-        $name = $this->faker->text(15, true);
-
         return [
-            'name' => $name
+            'title' => $this->faker->text(15, true),
+            'description' => $this->faker->text(200, true),
+            'publication_date' => $this->faker->date()
         ];
     }
 }
