@@ -38,6 +38,7 @@ class UsersSeeder extends Seeder
 
         // Assign roles
         $user = User::find(1);
+        $user->assignRole('user');
         $user->assignRole('librarian');
 
         $user = User::find(2);

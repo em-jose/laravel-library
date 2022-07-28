@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use \App\Models\PermissionInfo;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -19,20 +20,19 @@ class RolesAndPermissionsSeeder extends Seeder
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         // Create permissions
-        Permission::create(['name' => 'books-access']);
-        Permission::create(['name' => 'author-access']);
+        $permissions = PermissionInfo::getAllPermissions();
+
+        foreach ($permissions as $permission) {
+            Permission::create(['name' => $permission]);
+        }
 
         // Create roles
         $librarian_role = Role::create(['name' => 'librarian']);
         $user_role = Role::create(['name' => 'user']);
 
         // Assign permissions to roles
-        $librarian_role->givePermissionTo([
-            'author-access',
-        ]);
+        $librarian_role->givePermissionTo(PermissionInfo::getLibrarianPermissions());
 
-        $user_role->givePermissionTo([
-            'books-access',
-        ]);
+        $user_role->givePermissionTo(PermissionInfo::getUserPermissions());
     }
 }
