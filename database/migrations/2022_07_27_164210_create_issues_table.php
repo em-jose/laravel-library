@@ -14,6 +14,8 @@ return new class extends Migration {
     {
         Schema::create('issues', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('book_id')->constrained('books');
+            $table->foreignId('user_id')->constrained('users');
             $table->date('issue_date');
             $table->date('return_date');
             $table->timestamps();
