@@ -10,15 +10,9 @@
 </head>
 
 <body>
-    <h1 class="text-5xl font-bold">Books</h1>
+    <h1 class="text-5xl font-bold">Create book</h1>
     <div>
-        @forelse ($books as $book)
-            {{ $book->title }}<br>
-        @empty
-            <div class="alert alert-secondary" role="alert">
-                @lang('Sorry, there are no books')
-            </div>
-        @endforelse
+
     </div>
 </body>
 

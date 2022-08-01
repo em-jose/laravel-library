@@ -10,13 +10,13 @@
 </head>
 
 <body>
-    <h1 class="text-5xl font-bold">Books</h1>
+    <h1 class="text-5xl font-bold">Authors</h1>
     <div>
-        @forelse ($books as $book)
-            {{ $book->title }}<br>
+        @forelse ($authors as $author)
+            {{ $author->name }}<br>
         @empty
             <div class="alert alert-secondary" role="alert">
-                @lang('Sorry, there are no books')
+                @lang('Sorry, there are no authors')
             </div>
         @endforelse
     </div>

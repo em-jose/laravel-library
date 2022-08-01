@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use \App\Models\PermissionInfo;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -20,19 +19,68 @@ class RolesAndPermissionsSeeder extends Seeder
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         // Create permissions
-        $permissions = PermissionInfo::getAllPermissions();
+        $permissions = [
+            'book-view',
+            'book-create',
+            'book-edit',
+            'book-delete',
+            'author-view',
+            'author-create',
+            'author-edit',
+            'author-delete',
+            'category-view',
+            'category-create',
+            'category-edit',
+            'category-delete',
+            'user-view',
+            'user-create',
+            'user-edit',
+            'user-delete',
+            'librarian-view',
+            'librarian-create',
+            'librarian-edit',
+            'librarian-delete',
+            'admin-view',
+            'admin-create',
+            'admin-edit',
+            'admin-delete',
+        ];
 
         foreach ($permissions as $permission) {
             Permission::create(['name' => $permission]);
         }
 
         // Create roles
+        $admin_role = Role::create(['name' => 'admin']);
         $librarian_role = Role::create(['name' => 'librarian']);
         $user_role = Role::create(['name' => 'user']);
 
         // Assign permissions to roles
-        $librarian_role->givePermissionTo(PermissionInfo::getLibrarianPermissions());
+        $admin_role->givePermissionTo($permissions);
 
-        $user_role->givePermissionTo(PermissionInfo::getUserPermissions());
+        $librarian_role->givePermissionTo([
+            'book-view',
+            'book-create',
+            'book-edit',
+            'book-delete',
+            'author-view',
+            'author-create',
+            'author-edit',
+            'author-delete',
+            'category-view',
+            'category-create',
+            'category-edit',
+            'category-delete',
+            'user-view',
+            'user-create',
+            'user-edit',
+            'user-delete',
+        ]);
+
+        $user_role->givePermissionTo([
+            'book-view',
+            'author-view',
+            'category-view',
+        ]);
     }
 }
