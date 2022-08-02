@@ -1,25 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Books') }}
+        </h2>
+    </x-slot>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    @vite('resources/css/app.css')
-</head>
-
-<body>
-    <h1 class="text-5xl font-bold">Books</h1>
-    <div>
-        @forelse ($books as $book)
-            {{ $book->title }}<br>
-        @empty
-            <div class="alert alert-secondary" role="alert">
-                @lang('Sorry, there are no books')
+    <div class="py-14 ">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div>
+                    @forelse ($books as $book)
+                        {{ $book->title }}<br>
+                    @empty
+                        <div class="alert alert-secondary" role="alert">
+                            @lang('Sorry, there are no books')
+                        </div>
+                    @endforelse
+                </div>
             </div>
-        @endforelse
+        </div>
     </div>
-</body>
-
-</html>
+</x-app-layout>

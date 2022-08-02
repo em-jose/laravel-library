@@ -27,7 +27,7 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        //
+        return view('author.create');
     }
 
     /**
@@ -38,7 +38,13 @@ class AuthorController extends Controller
      */
     public function store(StoreAuthorRequest $request)
     {
-        //
+        Author::create([
+            'name' => $request->input('name'),
+            'lastname' => $request->input('lastname'),
+            'birthdate' => $request->input('birthdate')
+        ]);
+
+        return redirect()->route('authors.index');
     }
 
     /**

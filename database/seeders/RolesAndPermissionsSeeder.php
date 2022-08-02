@@ -53,7 +53,6 @@ class RolesAndPermissionsSeeder extends Seeder
         // Create roles
         $admin_role = Role::create(['name' => 'admin']);
         $librarian_role = Role::create(['name' => 'librarian']);
-        $user_role = Role::create(['name' => 'user']);
 
         // Assign permissions to roles
         $admin_role->givePermissionTo($permissions);
@@ -71,16 +70,6 @@ class RolesAndPermissionsSeeder extends Seeder
             'category-create',
             'category-edit',
             'category-delete',
-            'user-view',
-            'user-create',
-            'user-edit',
-            'user-delete',
-        ]);
-
-        $user_role->givePermissionTo([
-            'book-view',
-            'author-view',
-            'category-view',
         ]);
     }
 }
