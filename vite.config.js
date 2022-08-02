@@ -7,6 +7,9 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
+                'node_modules/flowbite/dist/flowbite.css',
+                'node_modules/flowbite/dist/flowbite.js',
+                'node_modules/flowbite/dist/datepicker.js',
             ],
             refresh: true,
         }),
