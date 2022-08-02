@@ -41,7 +41,7 @@ class AuthorController extends Controller
         Author::create([
             'name' => $request->input('name'),
             'lastname' => $request->input('lastname'),
-            'birthdate' => $request->input('birthdate')
+            'birth_date' => $request->input('birth_date')
         ]);
 
         return redirect()->route('authors.index');

@@ -12,13 +12,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
     <!-- Scripts -->
-    @vite([
-        'resources/css/app.css',
-        'resources/js/app.js',
-        'node_modules/flowbite/dist/flowbite.css',
-        'node_modules/flowbite/dist/flowbite.js',
-        'node_modules/flowbite/dist/datepicker.js'
-    ])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="font-sans antialiased">
