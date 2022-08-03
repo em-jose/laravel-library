@@ -24,6 +24,9 @@
                                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                                     <tr>
                                         <th scope="col" class="py-3 px-6">
+                                            {{ __('#ID') }}
+                                        </th>
+                                        <th scope="col" class="py-3 px-6">
                                             {{ __('Name') }}
                                         </th>
                                         <th scope="col" class="py-3 px-6">
@@ -46,6 +49,14 @@
                                 <tbody>
                                     @foreach ($authors as $author)
                                         <tr class="bg-white border-b hover:bg-gray-50">
+                                            <th scope="row"
+                                                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
+                                                @if (!empty($author->id))
+                                                    {{ $author->id }}
+                                                @else
+                                                    -
+                                                @endif
+                                            </th>
                                             <th scope="row"
                                                 class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
                                                 @if (!empty($author->name))

@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // Populate main tables
-        Author::factory(10)->create();
+        Author::factory(25)->create();
         Book::factory(30)->create();
         Category::factory(30)->create();
 
