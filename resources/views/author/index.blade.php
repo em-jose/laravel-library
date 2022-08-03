@@ -16,7 +16,7 @@
 
                         <div class="p-6">
                             <a href="{{ route('authors.create') }}"
-                                class="px-6 py-3 text-blue-100 no-underline bg-blue-500 rounded hover:bg-blue-600 hover:text-blue-200">{{ __('+ Add author') }}</a>
+                                class="px-6 py-3 no-underline bg-gray-800 hover:bg-gray-700 active:bg-gray-900 text-white font-bold rounded focus:outline-none focus:shadow-outline">{{ __('+ Add author') }}</a>
                         </div>
 
                         @if (!empty($authors))
