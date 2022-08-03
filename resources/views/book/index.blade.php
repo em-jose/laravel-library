@@ -30,6 +30,9 @@
                                             {{ __('Title') }}
                                         </th>
                                         <th scope="col" class="py-3 px-6">
+                                            {{ __('ISBN-13') }}
+                                        </th>
+                                        <th scope="col" class="py-3 px-6">
                                             {{ __('publication_date') }}
                                         </th>
                                         <th scope="col" class="py-3 px-6">
@@ -63,6 +66,13 @@
                                                     -
                                                 @endif
                                             </th>
+                                            <td class="py-4 px-6">
+                                                @if (!empty($book->isbn13))
+                                                    {{ $book->isbn13 }}
+                                                @else
+                                                    -
+                                                @endif
+                                            </td>
                                             <td class="py-4 px-6">
                                                 @if (!empty($book->publication_date))
                                                     {{ $book->publication_date }}

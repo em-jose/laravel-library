@@ -19,6 +19,7 @@ class BookFactory extends Factory
         return [
             'title' => $this->faker->text(15, true),
             'description' => $this->faker->text(200, true),
+            'isbn13' => $this->faker->isbn13(13, true),
             'publication_date' => $this->faker->date()
         ];
     }

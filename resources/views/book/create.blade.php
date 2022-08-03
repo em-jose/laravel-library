@@ -34,6 +34,19 @@
                     </div>
 
                     <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="isbn13">
+                            {{ __('ISBN-13') }}
+                        </label>
+                        <input
+                            class="w-64 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 @error('isbn13') border-red-500 @enderror"
+                            id="isbn13" name="isbn13" type="text" maxlength="13" value="{{ old('isbn13') }}"
+                            required>
+                        @error('isbn13')
+                            <x-error-message type="error" :message="$message" />
+                        @enderror
+                    </div>
+
+                    <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
                             {{ __('Description') }}
                         </label>

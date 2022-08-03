@@ -40,6 +40,7 @@ class BookController extends Controller
     {
         Book::create([
             'title' => $request->input('title'),
+            'isbn13' => $request->input('isbn13'),
             'description' => $request->input('description'),
             'publication_date' => $request->input('publication_date')
         ]);
@@ -83,6 +84,7 @@ class BookController extends Controller
     public function update(UpdateBookRequest $request, Book $book)
     {
         $book->title = $request->input('title');
+        $book->isbn13 = $request->input('isbn13');
         $book->description = $request->input('description');
         $book->publication_date = $request->input('publication_date');
 

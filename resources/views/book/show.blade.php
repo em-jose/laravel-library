@@ -20,6 +20,9 @@
                             <span class="font-bold">{{ __('Title') }}</span>: {{ $book->title }}
                         </li>
                         <li>
+                            <span class="font-bold">{{ __('ISBN-13') }}</span>: {{ $book->isbn13 }}
+                        </li>
+                        <li>
                             <span class="font-bold">{{ __('Description') }}</span>: {{ $book->description }}
                         </li>
                         <li>
