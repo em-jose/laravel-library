@@ -38,7 +38,13 @@ class BookController extends Controller
      */
     public function store(StoreBookRequest $request)
     {
-        //
+        Book::create([
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'publication_date' => $request->input('publication_date')
+        ]);
+
+        return redirect()->route('books.index')->with('message', __('book.created'));
     }
 
     /**
