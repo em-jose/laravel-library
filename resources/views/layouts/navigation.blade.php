@@ -19,7 +19,7 @@
 
                 @if (Auth::user())
                     <div
-                        class="hidden sm:flex sm:items-center sm:ml-6 {{ request()->is('books*') ? 'border-b-2 border-indigo-400' : '' }}">
+                        class="hidden sm:flex sm:items-center sm:ml-6 {{ request()->is('books*') ? 'border-b-2 border-gray-700' : '' }}">
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
                                 <button
@@ -49,7 +49,7 @@
                     </div>
 
                     <div
-                        class="hidden sm:flex sm:items-center sm:ml-6 {{ request()->is('authors*') ? 'border-b-2 border-indigo-400' : '' }}">
+                        class="hidden sm:flex sm:items-center sm:ml-6 {{ request()->is('authors*') ? 'border-b-2 border-gray-700' : '' }}">
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
                                 <button
@@ -79,7 +79,7 @@
                     </div>
 
                     <div
-                        class="hidden sm:flex sm:items-center sm:ml-6 {{ request()->is('categories*') ? 'border-b-2 border-indigo-400' : '' }}">
+                        class="hidden sm:flex sm:items-center sm:ml-6 {{ request()->is('categories*') ? 'border-b-2 border-gray-700' : '' }}">
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
                                 <button
@@ -110,7 +110,7 @@
 
                     @role('admin')
                         <div
-                            class="hidden sm:flex sm:items-center sm:ml-6 {{ request()->is('users*') ? 'border-b-2 border-indigo-400' : '' }}">
+                            class="hidden sm:flex sm:items-center sm:ml-6 {{ request()->is('users*') ? 'border-b-2 border-gray-700' : '' }}">
                             <x-dropdown align="right" width="48">
                                 <x-slot name="trigger">
                                     <button
