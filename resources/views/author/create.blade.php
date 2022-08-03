@@ -16,36 +16,36 @@
 
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
-                            Name
+                            {{ __('Name') }}
                         </label>
                         <input
-                            class="w-64 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500"
-                            id="name" name="name" type="text">
+                            class="w-64 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 @error('name') border-red-500 @enderror"
+                            id="name" name="name" type="text" value="{{ old('name') }}">
                         @error('name')
-                            {{ $message }}
+                            <x-error-message type="error" :message="$message" />
                         @enderror
                     </div>
 
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="lastname">
-                            Last name
+                            {{ __('Last name') }}
                         </label>
                         <input
-                            class="w-64 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500"
-                            id="lastname" name="lastname" type="text">
+                            class="w-64 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 @error('lastname') border-red-500 @enderror"
+                            id="lastname" name="lastname" type="text" value="{{ old('lastname') }}">
                         @error('lastname')
-                            {{ $message }}
+                            <x-error-message type="error" :message="$message" />
                         @enderror
                     </div>
 
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="birth_date">
-                            Birth date
+                            {{ __('Birth date') }}
                         </label>
-                        <input type="date" id="birth_date" name="birth_date"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block" />
-                        @error('lastname')
-                            {{ $message }}
+                        <input type="date" id="birth_date" name="birth_date" value="{{ old('birth_date') }}"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block @error('birth_date') border-red-500 @enderror" />
+                        @error('birth_date')
+                            <x-error-message type="error" :message="$message" />
                         @enderror
                     </div>
 
@@ -54,7 +54,7 @@
                         <button
                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                             type="submit">
-                            Save
+                            {{ __('Save') }}
                         </button>
                     </div>
                 </form>
