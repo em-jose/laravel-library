@@ -54,7 +54,10 @@
                                             <th scope="row"
                                                 class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
                                                 @if (!empty($category->name))
-                                                    {{ $category->name }}
+                                                    <a href="{{ route('categories.show', $category) }}"
+                                                        class="font-medium text-blue-600 hover:underline">
+                                                        <span>{{ $category->name }}</span>
+                                                    </a>
                                                 @else
                                                     -
                                                 @endif
@@ -70,7 +73,8 @@
                                                 </a>
                                             </td>
                                             <td class="py-4 px-6 text-right">
-                                                <form method="POST" action="{{ route('categories.destroy', $category) }}">
+                                                <form method="POST"
+                                                    action="{{ route('categories.destroy', $category) }}">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit"
