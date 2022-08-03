@@ -88,8 +88,14 @@
                                                     class="font-medium text-blue-600 hover:underline">{{ __('Edit') }}</a>
                                             </td>
                                             <td class="py-4 px-6 text-right">
-                                                <a href="#"
-                                                    class="font-medium text-red-600 hover:underline">{{ __('Delete') }}</a>
+                                                <form method="POST" action="{{ route('authors.destroy', $author) }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                        class="font-medium text-red-600 hover:underline">
+                                                        <span>{{ __('Delete') }}</span>
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
