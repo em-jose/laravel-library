@@ -44,7 +44,7 @@ class AuthorController extends Controller
             'birth_date' => $request->input('birth_date')
         ]);
 
-        return redirect()->route('authors.index');
+        return redirect()->route('authors.index')->with('message', __('author.created'));
     }
 
     /**
