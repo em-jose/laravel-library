@@ -13,18 +13,15 @@ use Illuminate\Support\Facades\Route;
     Route::resource('books', BookController::class);
 }); */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('home');
+
     Route::resource('books', BookController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('authors', AuthorController::class);
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
