@@ -40,7 +40,7 @@
                                 {{ __('Books list') }}
                             </x-dropdown-link>
                             <x-dropdown-link :href="route('books.create')">
-                                {{ __('Create book') }}
+                                {{ __('Add book') }}
                             </x-dropdown-link>
                         </x-slot>
                     </x-dropdown>
@@ -69,7 +69,7 @@
                                 {{ __('Authors list') }}
                             </x-dropdown-link>
                             <x-dropdown-link :href="route('authors.create')">
-                                {{ __('Create author') }}
+                                {{ __('Add author') }}
                             </x-dropdown-link>
                         </x-slot>
                     </x-dropdown>
@@ -98,7 +98,7 @@
                                 {{ __('Categories list') }}
                             </x-dropdown-link>
                             <x-dropdown-link :href="route('categories.create')">
-                                {{ __('Create category') }}
+                                {{ __('Add category') }}
                             </x-dropdown-link>
                         </x-slot>
                     </x-dropdown>
@@ -128,7 +128,7 @@
                                     {{ __('Users list') }}
                                 </x-dropdown-link>
                                 <x-dropdown-link :href="route('categories.create')">
-                                    {{ __('Create new user') }}
+                                    {{ __('Add new user') }}
                                 </x-dropdown-link>
                             </x-slot>
                         </x-dropdown>

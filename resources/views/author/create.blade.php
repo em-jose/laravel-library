@@ -20,7 +20,7 @@
                         </label>
                         <input
                             class="w-64 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 @error('name') border-red-500 @enderror"
-                            id="name" name="name" type="text" value="{{ old('name') }}">
+                            id="name" name="name" type="text" maxlength="80" value="{{ old('name') }}">
                         @error('name')
                             <x-error-message type="error" :message="$message" />
                         @enderror
@@ -32,7 +32,7 @@
                         </label>
                         <input
                             class="w-64 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 @error('lastname') border-red-500 @enderror"
-                            id="lastname" name="lastname" type="text" value="{{ old('lastname') }}">
+                            id="lastname" name="lastname" type="text" maxlength="80" value="{{ old('lastname') }}">
                         @error('lastname')
                             <x-error-message type="error" :message="$message" />
                         @enderror
