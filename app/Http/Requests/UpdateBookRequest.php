@@ -25,8 +25,8 @@ class UpdateBookRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:250',
-            'description' => 'string|max:1200',
-            'publication_date' => 'nullable|date',
+            'description' => 'string|max:1000|nullable',
+            'publication_date' => 'date|nullable',
         ];
     }
 }

@@ -60,7 +60,9 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        return view('book.edit', [
+            'book' => $book
+        ]);
     }
 
     /**
@@ -72,7 +74,13 @@ class BookController extends Controller
      */
     public function update(UpdateBookRequest $request, Book $book)
     {
-        //
+        $book->title = $request->input('title');
+        $book->description = $request->input('description');
+        $book->publication_date = $request->input('publication_date');
+
+        $book->save();
+
+        return redirect()->route('books.index')->with('message', __('book.updated'));
     }
 
     /**
