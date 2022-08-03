@@ -66,7 +66,9 @@ class AuthorController extends Controller
      */
     public function edit(Author $author)
     {
-        //
+        return view('author.edit', [
+            'author' => $author
+        ]);
     }
 
     /**
@@ -78,7 +80,13 @@ class AuthorController extends Controller
      */
     public function update(UpdateAuthorRequest $request, Author $author)
     {
-        //
+        $author->name = $request->input('name');
+        $author->lastname = $request->input('lastname');
+        $author->birth_date = $request->input('birth_date');
+
+        $author->save();
+
+        return redirect()->route('authors.index')->with('message', __('author.updated'));
     }
 
     /**

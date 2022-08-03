@@ -84,8 +84,10 @@
                                                     class="font-medium text-blue-600 hover:underline">{{ __('Books (count)') }}</a>
                                             </td>
                                             <td class="py-4 px-6 text-right">
-                                                <a href="#"
-                                                    class="font-medium text-blue-600 hover:underline">{{ __('Edit') }}</a>
+                                                <a href="{{ route('authors.edit', $author) }}"
+                                                    class="font-medium text-blue-600 hover:underline">
+                                                    <span>{{ __('Edit') }}</span>
+                                                </a>
                                             </td>
                                             <td class="py-4 px-6 text-right">
                                                 <form method="POST" action="{{ route('authors.destroy', $author) }}">
