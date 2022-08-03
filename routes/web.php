@@ -3,16 +3,12 @@
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /**
  *
  */
-
-/* Route::group(['middleware' => ['can:book-view']], function () {
-    Route::resource('books', BookController::class);
-}); */
-
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', function () {
@@ -22,6 +18,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('books', BookController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('authors', AuthorController::class);
+});
+
+Route::group(['middleware' => ['can:user-create']], function () {
+    Route::resource('users', UserController::class);
 });
 
 require __DIR__.'/auth.php';
