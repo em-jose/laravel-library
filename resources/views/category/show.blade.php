@@ -15,7 +15,11 @@
                 </div>
 
                 <div class="p-6">
-                    <span class="font-bold">{{ __('Category name') }}</span>: {{ $category->name }}
+                    <ul>
+                        <li>
+                            <span class="font-bold">{{ __('Category name') }}</span>: {{ $category->name }}
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

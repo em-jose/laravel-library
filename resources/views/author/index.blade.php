@@ -60,7 +60,10 @@
                                             <th scope="row"
                                                 class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
                                                 @if (!empty($author->name))
-                                                    {{ $author->name }}
+                                                    <a href="{{ route('authors.show', $author) }}"
+                                                        class="font-medium text-blue-600 hover:underline">
+                                                        <span>{{ $author->name }}</span>
+                                                    </a>
                                                 @else
                                                     -
                                                 @endif
