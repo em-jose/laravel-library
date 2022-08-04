@@ -60,7 +60,11 @@
                                             </th>
                                             <td class="py-4 px-6">
                                                 @if (!empty($user->name))
-                                                    {{ $user->name }}
+                                                    <a href="{{ route('users.show', $user) }}"
+                                                        class="font-medium text-blue-600 hover:underline"
+                                                        title="{{ $user->name }}">
+                                                        <span>{{ $user->name }}</span>
+                                                    </a>
                                                 @else
                                                     -
                                                 @endif
