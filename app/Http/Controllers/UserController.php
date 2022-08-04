@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
-use App\Models\User;
 
 class UserController extends Controller
 {
@@ -27,7 +30,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all()->pluck('name');
+
+        return view('user.create', compact('roles'));
     }
 
     /**
@@ -38,7 +43,22 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        //
+        $user = User::create([
+            'name' => $request->input('name'),
+            'lastname' => $request->input('lastname'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password'))
+        ]);
+
+        $roles = $request->input('roles');
+
+        foreach ($roles as $role) {
+            $user->assignRole($role);
+        }
+
+        event(new Registered($user));
+
+        return redirect()->route('users.index')->with('message', __('user.created'));
     }
 
     /**

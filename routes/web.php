@@ -7,7 +7,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /**
- *
+ * Routes
  */
 
 Route::middleware(['auth'])->group(function () {
@@ -18,10 +18,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('books', BookController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('authors', AuthorController::class);
-});
 
-Route::group(['middleware' => ['can:user-create']], function () {
-    Route::resource('users', UserController::class);
+    Route::group(['middleware' => ['can:user-create']], function () {
+        Route::resource('users', UserController::class);
+    });
 });
 
 require __DIR__.'/auth.php';

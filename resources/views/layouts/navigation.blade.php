@@ -129,10 +129,10 @@
                                 </x-slot>
 
                                 <x-slot name="content">
-                                    <x-dropdown-link :href="route('categories.index')">
+                                    <x-dropdown-link :href="route('users.index')">
                                         {{ __('Users list') }}
                                     </x-dropdown-link>
-                                    <x-dropdown-link :href="route('categories.create')">
+                                    <x-dropdown-link :href="route('users.create')">
                                         {{ __('Add new user') }}
                                     </x-dropdown-link>
                                 </x-slot>
@@ -227,7 +227,7 @@
                         {{ __('Categories') }}
                     </x-responsive-nav-link>
                     @role('admin')
-                        <x-responsive-nav-link :href="route('categories.index')">
+                        <x-responsive-nav-link :href="route('users.index')">
                             {{ __('Users') }}
                         </x-responsive-nav-link>
                     @endrole
