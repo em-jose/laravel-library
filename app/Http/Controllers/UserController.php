@@ -103,6 +103,13 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        if ($user->email == auth()->user()->email) {
+            return redirect()->back()
+                ->withErrors(['roles' => __('user.user_delete')]);
+        }
+
+        $user->delete();
+
+        return redirect()->route('users.index')->with('message', __('user.deleted'));
     }
 }

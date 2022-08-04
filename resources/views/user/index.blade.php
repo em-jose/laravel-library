@@ -14,6 +14,10 @@
                             <x-success-message type="success" :message="session('message')" />
                         @endif
 
+                        @error('roles')
+                            <x-error-message-fw type="error" :message="$message" />
+                        @enderror
+
                         <div class="p-6">
                             <a href="{{ route('users.create') }}"
                                 class="px-6 py-3 no-underline bg-gray-800 hover:bg-gray-700 active:bg-gray-900 text-white font-bold rounded focus:outline-none focus:shadow-outline">{{ __('+ Add user') }}</a>
