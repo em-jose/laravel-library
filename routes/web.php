@@ -15,9 +15,15 @@ Route::middleware(['auth'])->group(function () {
         return view('welcome');
     })->name('home');
 
-    Route::resource('books', BookController::class);
-    Route::resource('categories', CategoryController::class);
-    Route::resource('authors', AuthorController::class);
+    Route::get('/books/authors/{author_id}', [
+        BookController::class, 'showBooksByAuthor'
+    ])->name('author-books');
+
+    Route::resources([
+        'categories' => CategoryController::class,
+        'authors' => AuthorController::class,
+        'books' => BookController::class,
+    ]);
 
     Route::group(['middleware' => ['can:user-create']], function () {
         Route::resource('users', UserController::class);

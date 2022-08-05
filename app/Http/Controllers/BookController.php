@@ -128,4 +128,24 @@ class BookController extends Controller
 
         return redirect()->route('books.index')->with('message', __('book.deleted'));
     }
+
+    /**
+     * Show the books of one specific author.
+     *
+     * @param int $author_id
+     * @return \Illuminate\Http\Response
+     */
+    public function showBooksByAuthor(int $author_id)
+    {
+        if (!(Author::where('id', $author_id)->exists())) {
+            return abort(404);
+        }
+
+        $author = Author::find($author_id);
+        $books = $author->books()->paginate(10);
+
+        return view('book.index', [
+            'books' => $books
+        ]);
+    }
 }

@@ -73,8 +73,8 @@
                                                 @endif
                                             </td>
                                             <td class="py-4 px-6 text-right">
-                                                <a href="#"
-                                                    class="font-medium text-blue-600 hover:underline">{{ __('Books (count)') }}</a>
+                                                <a href="{{ route('author-books', $author->id) }}"
+                                                    class="font-medium text-blue-600 hover:underline">{{ __('Author\'s books') }} ({{$author->books()->count()}})</a>
                                             </td>
                                             <td class="py-4 px-6 text-right">
                                                 <a href="{{ route('authors.edit', $author) }}"
