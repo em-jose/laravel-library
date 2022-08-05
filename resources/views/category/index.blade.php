@@ -63,8 +63,9 @@
                                                 @endif
                                             </th>
                                             <td class="py-4 px-6 text-right">
-                                                <a href="#"
-                                                    class="font-medium text-blue-600 hover:underline">{{ __('Categories (count)') }}</a>
+                                                    <a href="{{ route('category-books', $category->id) }}"
+                                                        class="font-medium text-blue-600 hover:underline">{{ __('Books') }} ({{$category->books()->count()}})
+                                                    </a>
                                             </td>
                                             <td class="py-4 px-6 text-right">
                                                 <a href="{{ route('categories.edit', $category) }}"
