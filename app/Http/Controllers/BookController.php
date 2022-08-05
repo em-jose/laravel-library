@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
+use App\Models\Author;
 use App\Models\Book;
+use App\Models\Category;
 
 class BookController extends Controller
 {
@@ -17,7 +19,9 @@ class BookController extends Controller
     {
         $books = Book::paginate(10);
 
-        return view('book.index', compact('books'));
+        return view('book.index', [
+            'books' => $books
+        ]);
     }
 
     /**
@@ -27,7 +31,13 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('book.create');
+        $categories = Category::orderBy('name')->get();
+        $authors = Author::orderBy('name')->get();
+
+        return view('book.create', [
+            'categories' => $categories,
+            'authors' => $authors
+        ]);
     }
 
     /**
@@ -38,12 +48,15 @@ class BookController extends Controller
      */
     public function store(StoreBookRequest $request)
     {
-        Book::create([
+        $book = Book::create([
             'title' => $request->input('title'),
             'isbn13' => $request->input('isbn13'),
             'description' => $request->input('description'),
             'publication_date' => $request->input('publication_date')
         ]);
+
+        $book->authors()->attach($request->input('authors'));
+        $book->categories()->attach($request->input('categories'));
 
         return redirect()->route('books.index')->with('message', __('book.created'));
     }
@@ -69,8 +82,13 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
+        $categories = Category::orderBy('name')->get();
+        $authors = Author::orderBy('name')->get();
+
         return view('book.edit', [
-            'book' => $book
+            'book' => $book,
+            'categories' => $categories,
+            'authors' => $authors
         ]);
     }
 
@@ -89,6 +107,9 @@ class BookController extends Controller
         $book->publication_date = $request->input('publication_date');
 
         $book->save();
+
+        $book->authors()->sync($request->input('authors'));
+        $book->categories()->sync($request->input('categories'));
 
         return redirect()->route('books.index')->with('message', __('book.updated'));
     }

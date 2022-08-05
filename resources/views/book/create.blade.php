@@ -39,7 +39,7 @@
                         </label>
                         <input
                             class="w-64 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 @error('isbn13') border-red-500 @enderror"
-                            id="isbn13" name="isbn13" type="text" maxlength="13" value="{{ old('isbn13') }}"
+                            id="isbn13" name="isbn13" type="text" minlength="13" maxlength="13" value="{{ old('isbn13') }}"
                             required>
                         @error('isbn13')
                             <x-error-message type="error" :message="$message" />
@@ -66,6 +66,44 @@
                             value="{{ old('publication_date') }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block @error('publication_date') border-red-500 @enderror" />
                         @error('publication_date')
+                            <x-error-message type="error" :message="$message" />
+                        @enderror
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="authors">
+                            {{ __('Author/Authors') }}
+                        </label>
+                        <div class="overflow-y-auto h-64 w-96 p-2 bg-gray-50 border border-gray-300 rounded scrollbar">
+                            @foreach ($authors as $author)
+                                <div class="flex items-center mb-4">
+                                    <input name="authors[]" type="checkbox" value="{{ $author->id }}"
+                                        class="w-4 h-4 text-blue-600 bg-gray-50 rounded border-gray-300 focus:ring-blue-500 focus:ring-2">
+                                    <label for="authors"
+                                        class="ml-2 text-sm font-medium text-gray-900">{{ $author->name }} {{ $author->lastname }}</label>
+                                </div>
+                            @endforeach
+                        </div>
+                        @error('authors')
+                            <x-error-message type="error" :message="$message" />
+                        @enderror
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="categories">
+                            {{ __('Categories') }}
+                        </label>
+                        <div class="overflow-y-auto h-64 w-96 p-2 bg-gray-50 border border-gray-300 rounded scrollbar">
+                            @foreach ($categories as $category)
+                                <div class="flex items-center mb-4">
+                                    <input name="categories[]" type="checkbox" value="{{ $category->id }}"
+                                        class="w-4 h-4 text-blue-600 bg-gray-50 rounded border-gray-300 focus:ring-blue-500 focus:ring-2">
+                                    <label for="categories"
+                                        class="ml-2 text-sm font-medium text-gray-900">{{ $category->name }} {{ $category->lastname }}</label>
+                                </div>
+                            @endforeach
+                        </div>
+                        @error('categories')
                             <x-error-message type="error" :message="$message" />
                         @enderror
                     </div>

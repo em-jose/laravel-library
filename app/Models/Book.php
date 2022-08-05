@@ -25,9 +25,9 @@ class Book extends Model
     /**
      * Get all the book's authors
      */
-    public function author(): BelongsToMany
+    public function authors(): BelongsToMany
     {
-        return $this->belongsToMany(Author::class);
+        return $this->belongsToMany(Author::class, 'author_book');
     }
 
     /**
@@ -35,6 +35,6 @@ class Book extends Model
      */
     public function categories(): BelongsToMany
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class, 'book_category');
     }
 }

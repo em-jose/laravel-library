@@ -26,9 +26,18 @@ class UpdateBookRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:250',
-            'isbn13' => 'required|unique:books|max:13',
+            'isbn13' => [
+                'required',
+                'min:13',
+                'max:13',
+                Rule::unique('books')->ignore($this->route('book')->id)
+            ],
             'description' => 'string|max:1000|nullable',
             'publication_date' => 'date|nullable',
+            'authors' => 'required|array',
+            'authors.*' => 'numeric',
+            'categories' => 'nullable|array',
+            'categories.*' => 'numeric',
         ];
     }
 }
