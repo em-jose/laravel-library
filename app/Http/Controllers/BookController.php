@@ -155,7 +155,7 @@ class BookController extends Controller
      * @param int $category_id
      * @return \Illuminate\Http\Response
      */
-    public function showBooksByCategory($category_id)
+    public function showBooksByCategory(int $category_id)
     {
         if (!(Category::where('id', $category_id)->exists())) {
             return abort(404);
