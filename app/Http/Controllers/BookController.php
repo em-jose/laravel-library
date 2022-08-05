@@ -148,4 +148,24 @@ class BookController extends Controller
             'books' => $books
         ]);
     }
+
+    /**
+     * Show the books of one specific category.
+     *
+     * @param int $category_id
+     * @return \Illuminate\Http\Response
+     */
+    public function showBooksByCategory($category_id)
+    {
+        if (!(Category::where('id', $category_id)->exists())) {
+            return abort(404);
+        }
+
+        $category = Category::find($category_id);
+        $books = $category->books()->paginate(10);
+
+        return view('book.index', [
+            'books' => $books
+        ]);
+    }
 }

@@ -19,6 +19,10 @@ Route::middleware(['auth'])->group(function () {
         BookController::class, 'showBooksByAuthor'
     ])->name('author-books');
 
+    Route::get('/books/categories/{category_id}', [
+        BookController::class, 'showBooksByCategory'
+    ])->name('category-books');
+
     Route::resources([
         'categories' => CategoryController::class,
         'authors' => AuthorController::class,
