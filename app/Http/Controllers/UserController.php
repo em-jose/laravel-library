@@ -82,7 +82,12 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $roles = Role::all()->pluck('name');
+
+        return view('user.edit', [
+            'user' => $user,
+            'roles' => $roles
+        ]);
     }
 
     /**
@@ -94,7 +99,20 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        //
+        $user->name = $request->input('name');
+        $user->lastname = $request->input('lastname');
+        $user->email = $request->input('email');
+
+        if(!empty($request->input('password'))) {
+            $user->password = Hash::make($request->input('password'));
+        }
+
+        $user->save();
+
+        $roles = $request->input('roles');
+        $user->syncRoles($roles);
+
+        return redirect()->route('users.index')->with('message', __('book.updated'));
     }
 
     /**
