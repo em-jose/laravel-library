@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreAuthorRequest;
 use App\Http\Requests\UpdateAuthorRequest;
-use App\Models\Author;
 
 class AuthorController extends Controller
 {
@@ -99,6 +100,22 @@ class AuthorController extends Controller
      */
     public function destroy(Author $author)
     {
+        if(!empty($author->books)) {
+            foreach ($author->books as $book) {
+                $authors_has_this_book_count = DB::table('author_book')
+                    ->where('book_id', $book->id)
+                    ->count();
+
+                if($authors_has_this_book_count > 1) {
+                    $author->books()->detach($book->id);
+                } else {
+                    $author->books()->detach($book->id);
+                    $book->categories()->detach();
+                    $book->delete();
+                }
+            }
+        }
+
         $author->delete();
 
         return redirect()->route('authors.index')->with('message', __('author.deleted'));

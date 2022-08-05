@@ -27,10 +27,7 @@
                                             {{ __('#ID') }}
                                         </th>
                                         <th scope="col" class="py-3 px-6">
-                                            {{ __('Name') }}
-                                        </th>
-                                        <th scope="col" class="py-3 px-6">
-                                            {{ __('Lastname') }}
+                                            {{ __('Name + Lastname') }}
                                         </th>
                                         <th scope="col" class="py-3 px-6">
                                             {{ __('Date of birth') }}
@@ -62,19 +59,12 @@
                                                 @if (!empty($author->name))
                                                     <a href="{{ route('authors.show', $author) }}"
                                                         class="font-medium text-blue-600 hover:underline">
-                                                        <span>{{ $author->name }}</span>
+                                                        <span>{{ $author->name }} {{ $author->lastname }}</span>
                                                     </a>
                                                 @else
                                                     -
                                                 @endif
                                             </th>
-                                            <td class="py-4 px-6">
-                                                @if (!empty($author->lastname))
-                                                    {{ $author->lastname }}
-                                                @else
-                                                    -
-                                                @endif
-                                            </td>
                                             <td class="py-4 px-6">
                                                 @if (!empty($author->birth_date))
                                                     {{ $author->birth_date }}

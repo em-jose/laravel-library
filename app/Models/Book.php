@@ -27,7 +27,8 @@ class Book extends Model
      */
     public function authors(): BelongsToMany
     {
-        return $this->belongsToMany(Author::class, 'author_book');
+        return $this->belongsToMany(Author::class, 'author_book')
+            ->withTimestamps();
     }
 
     /**
@@ -35,6 +36,7 @@ class Book extends Model
      */
     public function categories(): BelongsToMany
     {
-        return $this->belongsToMany(Category::class, 'book_category');
+        return $this->belongsToMany(Category::class, 'book_category')
+            ->withTimestamps();
     }
 }
