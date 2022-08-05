@@ -102,11 +102,11 @@ class AuthorController extends Controller
     {
         if(!empty($author->books)) {
             foreach ($author->books as $book) {
-                $authors_has_this_book_count = DB::table('author_book')
+                $authors_have_this_book_count = DB::table('author_book')
                     ->where('book_id', $book->id)
                     ->count();
 
-                if($authors_has_this_book_count > 1) {
+                if($authors_have_this_book_count > 1) {
                     $author->books()->detach($book->id);
                 } else {
                     $author->books()->detach($book->id);
