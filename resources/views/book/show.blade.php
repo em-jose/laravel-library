@@ -28,6 +28,26 @@
                         <li>
                             <span class="font-bold">{{ __('Publication date') }}</span>: {{ $book->publication_date }}
                         </li>
+                        <div>
+                            <label for="categories" class="font-bold">{{ __('Authors') }}</label>:
+                            <div id="authors">
+                                <ul class="list-disc">
+                                    @foreach ($book->authors as $author)
+                                        <li class="ml-6">{{ $author->name }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="categories" class="font-bold">{{ __('Categories') }}</label>:
+                            <div id="categories">
+                                <ul class="list-disc">
+                                    @foreach ($book->categories as $category)
+                                        <li class="ml-6">{{ $category->name }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
                     </ul>
                 </div>
             </div>
