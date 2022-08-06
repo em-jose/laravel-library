@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Categories">
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Categories') }}
