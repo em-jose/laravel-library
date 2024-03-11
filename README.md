@@ -13,7 +13,7 @@
 
 ## Overview
 
-App built with Laravel to manage a library, allowing CRUD of books, authors, categories and users.
+This app was created for a technical test in which the objective was to create a CRUD of a library where you can register books, authors and categories and associate them all together, adding also a front-end and allowing access to users with different permissions.
 
 ## Installation
 
